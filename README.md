@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/icons/readme.svg" alt="Stop Play Logo" width="600" height="auto" />
 
-
+</div>
 
 ---
 
