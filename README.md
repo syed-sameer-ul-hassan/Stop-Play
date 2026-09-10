@@ -5,21 +5,6 @@
 
 ---
 
-
-  <p><strong>Intelligent Video Guardian & Background Audio Controller for Google Chrome</strong></p>
-
-  <p>
-    <a href="https://github.com/syed-sameer-ul-hassan/Stop-Play/releases"><img src="https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat-square" alt="Version 1.2.0" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-emerald.svg?style=flat-square" alt="Apache 2.0 License" /></a>
-    <img src="https://img.shields.io/badge/manifest-v3-purple.svg?style=flat-square" alt="Manifest V3" />
-    <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/react-18-61DAFB.svg?style=flat-square&logo=react&logoColor=black" alt="React 18" />
-    <a href="https://sameer.orildo.dev"><img src="https://img.shields.io/badge/creator-Syed%20Sameer%20Ul%20Hassan-rose.svg?style=flat-square" alt="Creator Syed Sameer Ul Hassan" /></a>
-  </p>
-</div>
-
----
-
 ## Overview
 
 **Stop Play** is a lightweight, open-source Google Chrome extension that monitors video and audio playback across your browser. When you switch away from a tab or switch from Chrome to an external desktop app (such as VS Code, Slack, or Zoom), Stop Play automatically pauses background media to save battery, save bandwidth, and stop unwanted distractions.
