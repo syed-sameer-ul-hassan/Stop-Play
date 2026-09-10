@@ -1,6 +1,11 @@
 <div align="center">
-  <img src="public/icons/readme.svg" alt="Stop Play Logo" width="84" height="84" />
-  <h1>Stop Play</h1>
+  <img src="public/icons/readme.svg" alt="Stop Play Logo" width="600" height="auto" />
+
+
+
+---
+
+
   <p><strong>Intelligent Video Guardian & Background Audio Controller for Google Chrome</strong></p>
 
   <p>
