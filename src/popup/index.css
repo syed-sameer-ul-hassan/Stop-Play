@@ -1,0 +1,83 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  .surface-card {
+    background: #111318;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .surface-card-active {
+    background: #141720;
+    border: 1px solid rgba(59, 130, 246, 0.28);
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 0 16px -2px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .surface-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .kbd-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 5px;
+    font-size: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+    color: #94a3b8;
+    background: #181b22;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes eq1 {
+  0%, 100% { height: 3px; }
+  50% { height: 14px; }
+}
+@keyframes eq2 {
+  0%, 100% { height: 11px; }
+  50% { height: 4px; }
+}
+@keyframes eq3 {
+  0%, 100% { height: 6px; }
+  50% { height: 16px; }
+}
+@keyframes eq4 {
+  0%, 100% { height: 13px; }
+  50% { height: 5px; }
+}
+
+.animate-eq-1 { animation: eq1 0.75s ease-in-out infinite; }
+.animate-eq-2 { animation: eq2 0.85s ease-in-out infinite 0.15s; }
+.animate-eq-3 { animation: eq3 0.65s ease-in-out infinite 0.3s; }
+.animate-eq-4 { animation: eq4 0.9s ease-in-out infinite 0.05s; }
+
+@keyframes radar-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-radar {
+  animation: radar-pulse 3s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}

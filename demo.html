@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Play — Test & Demo Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #030712;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen p-6 md:p-12">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b border-slate-800 pb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-800 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <span class="text-2xl font-bold text-white">SP</span>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-white tracking-tight">Stop Play Playground</h1>
+            <p class="text-sm text-slate-400">Interactive test suite for background video tracking and notifications</p>
+          </div>
+        </div>
+        <div class="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Ready for testing</span>
+        </div>
+      </div>
+
+      <!-- Test Guide Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2 text-rose-400 font-semibold text-sm">
+            <span>⏸ Auto-Pause on Tab Switch</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            1. Start playing the sample video below.<br />
+            2. Switch to another tab (<kbd class="px-1 py-0.5 bg-slate-800 rounded text-[10px]">Ctrl+T</kbd>).<br />
+            3. <strong>The video pauses automatically</strong> without requiring you to click any buttons!
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
+          <div class="flex items-center gap-2 text-emerald-400 font-semibold text-sm">
+            <span>⏸ Auto-Resume on Return</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            1. While paused, switch back to this tab.<br />
+            2. <strong>The video automatically resumes playing</strong> right where you left off!<br />
+            3. Also works seamlessly across external apps (switching to Slack / VS Code and back).
+          </p>
+        </div>
+      </div>
+
+      <!-- Video Player Test Bench -->
+      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-6 shadow-xl">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-white">Sample HTML5 Video Player</h2>
+            <p class="text-xs text-slate-400">Open-source sample video stream (Big Buck Bunny)</p>
+          </div>
+          <div id="playbackStatus" class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-mono font-medium">
+            Status: Paused
+          </div>
+        </div>
+
+        <!-- Video Element -->
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-black border border-slate-800 group shadow-2xl">
+          <video
+            id="testVideo"
+            class="w-full h-full object-contain"
+            controls
+            preload="metadata"
+            poster="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+          >
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+
+        <!-- Test Action Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <div class="flex items-center gap-2">
+            <button
+              id="btnPlay"
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold transition-all shadow-md active:scale-95"
+            >
+              Play Video
+            </button>
+            <button
+              id="btnPause"
+              class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition-all active:scale-95"
+            >
+              Pause Video
+            </button>
+            <button
+              id="btnMute"
+              class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition-all"
+            >
+              Toggle Mute
+            </button>
+          </div>
+
+          <div class="text-xs text-slate-500">
+            Current Time: <span id="currentTime" class="font-mono text-slate-300">0.00s</span> /
+            Duration: <span id="duration" class="font-mono text-slate-300">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamically Injected Video Tester (for testing MutationObserver) -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-bold text-white">Dynamic Video Insertion Test (SPA Simulator)</h3>
+            <p class="text-xs text-slate-400">Verifies that the extension's MutationObserver detects videos created after page load</p>
+          </div>
+          <button
+            id="btnAddDynamicVideo"
+            class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-medium transition-colors"
+          >
+            + Dynamically Inject Video
+          </button>
+        </div>
+
+        <div id="dynamicContainer" class="space-y-4"></div>
+      </div>
+
+      <!-- Footer Info -->
+      <footer class="text-center text-xs text-slate-600 pt-6">
+        Stop Play Chrome Extension Test Bench • Manifest V3
+      </footer>
+    </div>
+
+    <script>
+      const video = document.getElementById('testVideo');
+      const statusEl = document.getElementById('playbackStatus');
+      const currentTimeEl = document.getElementById('currentTime');
+      const durationEl = document.getElementById('duration');
+
+      const btnPlay = document.getElementById('btnPlay');
+      const btnPause = document.getElementById('btnPause');
+      const btnMute = document.getElementById('btnMute');
+      const btnAddDynamic = document.getElementById('btnAddDynamicVideo');
+      const dynamicContainer = document.getElementById('dynamicContainer');
+
+      btnPlay.addEventListener('click', () => video.play());
+      btnPause.addEventListener('click', () => video.pause());
+      btnMute.addEventListener('click', () => {
+        video.muted = !video.muted;
+        btnMute.textContent = video.muted ? 'Unmute' : 'Mute';
+      });
+
+      video.addEventListener('play', () => {
+        statusEl.textContent = 'Status: Playing';
+        statusEl.className = 'px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-mono font-medium border border-rose-500/30';
+      });
+
+      video.addEventListener('pause', () => {
+        statusEl.textContent = 'Status: Paused';
+        statusEl.className = 'px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-mono font-medium';
+      });
+
+      video.addEventListener('timeupdate', () => {
+        currentTimeEl.textContent = video.currentTime.toFixed(1) + 's';
+      });
+
+      video.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = video.duration.toFixed(1) + 's';
+      });
+
+      // Test dynamic video injection
+      btnAddDynamic.addEventListener('click', () => {
+        const div = document.createElement('div');
+        div.className = 'p-4 rounded-xl bg-black border border-slate-800 flex items-center justify-between';
+        div.innerHTML = `
+          <div class="flex items-center gap-3">
+            <video class="w-36 h-20 bg-slate-950 rounded-lg" controls>
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p class="text-xs font-semibold text-slate-200">Elephant's Dream (Dynamically Injected)</p>
+              <p class="text-[11px] text-slate-500">MutationObserver should detect this instantly</p>
+            </div>
+          </div>
+          <button class="text-xs text-rose-400 hover:text-rose-300" onclick="this.parentElement.remove()">Remove</button>
+        `;
+        dynamicContainer.appendChild(div);
+      });
+    </script>
+  </body>
+</html>
