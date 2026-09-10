@@ -9,7 +9,7 @@
   <p><strong>Intelligent Video Guardian & Background Audio Controller for Google Chrome</strong></p>
 
   <p>
-    <a href="https://github.com/syed-sameer-ul-hassan/Stop-Play/releases"><img src="https://img.shields.io/badge/version-1.2.0-blue.svg?style=flat-square" alt="Version 1.2.0" /></a>
+    <a href="https://github.com/syed-sameer-ul-hassan/Stop-Play/releases"><img src="https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat-square" alt="Version 1.2.0" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-emerald.svg?style=flat-square" alt="Apache 2.0 License" /></a>
     <img src="https://img.shields.io/badge/manifest-v3-purple.svg?style=flat-square" alt="Manifest V3" />
     <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
