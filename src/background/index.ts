@@ -303,6 +303,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     if (tabId) {
       const payload: VideoState = message.payload;
+      if (!payload.favicon && sender.tab?.favIconUrl) {
+        payload.favicon = sender.tab.favIconUrl;
+      }
       const existing = tabMediaMap.get(tabId);
 
       tabMediaMap.set(tabId, {

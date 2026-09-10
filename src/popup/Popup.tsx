@@ -23,6 +23,69 @@ interface PlayingTabInfo {
   isLocked?: boolean;
 }
 
+function SiteAvatar({
+  domain,
+  favicon,
+  size = 'large',
+}: {
+  domain: string;
+  favicon?: string;
+  size?: 'large' | 'small';
+}) {
+  const googleFavicon = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : '';
+  const [currentSrc, setCurrentSrc] = useState<string>(favicon || googleFavicon);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    setCurrentSrc(favicon || googleFavicon);
+    setHasError(false);
+  }, [favicon, domain, googleFavicon]);
+
+  const handleError = () => {
+    if (currentSrc !== googleFavicon && googleFavicon) {
+      setCurrentSrc(googleFavicon);
+    } else {
+      setHasError(true);
+    }
+  };
+
+  if (size === 'large') {
+    return (
+      <div className="relative w-11 h-11 rounded-xl bg-[#0f121a] border border-white/[0.12] overflow-hidden shrink-0 flex items-center justify-center p-2 shadow-lg group-hover:border-white/25 transition-all">
+        {!hasError && currentSrc ? (
+          <img
+            src={currentSrc}
+            alt={domain}
+            onError={handleError}
+            className="w-6 h-6 object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-110"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-xs font-bold font-mono text-blue-400">
+            {domain ? domain.charAt(0).toUpperCase() : <Play className="w-4 h-4 text-blue-400" />}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-6 h-6 rounded-lg bg-[#0f121a] border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center p-1 shadow-sm">
+      {!hasError && currentSrc ? (
+        <img
+          src={currentSrc}
+          alt={domain}
+          onError={handleError}
+          className="w-4 h-4 object-contain"
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-[10px] font-bold font-mono text-slate-400">
+          {domain ? domain.charAt(0).toUpperCase() : <Play className="w-2.5 h-2.5 text-slate-500" />}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Popup() {
   const [settings, setSettings] = useState<ExtensionSettings>(DEFAULT_SETTINGS);
   const [playingTabs, setPlayingTabs] = useState<PlayingTabInfo[]>([]);
@@ -230,26 +293,11 @@ export default function Popup() {
 
             <div className="surface-card-active rounded-xl p-3.5 transition-all relative overflow-hidden group">
               <div className="flex items-start gap-3">
-                <div className="relative w-10 h-10 rounded-lg bg-[#0e1017] border border-white/[0.1] overflow-hidden shrink-0 flex items-center justify-center">
-                  {heroItem.state.thumbnailUrl ? (
-                    <img
-                      src={heroItem.state.thumbnailUrl}
-                      alt="Thumbnail"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : heroItem.state.favicon ? (
-                    <img
-                      src={heroItem.state.favicon}
-                      alt={heroItem.state.domain}
-                      className="w-5 h-5 object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                    />
-                  ) : (
-                    <Play className="w-4 h-4 text-blue-400" />
-                  )}
-                </div>
+                <SiteAvatar
+                  domain={heroItem.state.domain}
+                  favicon={heroItem.state.favicon}
+                  size="large"
+                />
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-1">
@@ -366,13 +414,11 @@ export default function Popup() {
                   className="surface-card rounded-lg p-2.5 flex items-center justify-between gap-2 hover:border-white/[0.14] transition-colors group"
                 >
                   <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                    <div className="w-5 h-5 rounded bg-[#0b0c10] border border-white/[0.08] flex items-center justify-center shrink-0">
-                      {item.state.favicon ? (
-                        <img src={item.state.favicon} alt="" className="w-3.5 h-3.5 object-contain" />
-                      ) : (
-                        <Play className="w-2.5 h-2.5 text-slate-500" />
-                      )}
-                    </div>
+                    <SiteAvatar
+                      domain={item.state.domain}
+                      favicon={item.state.favicon}
+                      size="small"
+                    />
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-medium text-slate-200 truncate">
                         {item.state.title || 'Audio/Video Tab'}

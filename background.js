@@ -359,6 +359,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const windowId = sender.tab?.windowId || chrome.windows.WINDOW_ID_CURRENT;
     if (tabId) {
       const payload = message.payload;
+      if (!payload.favicon && sender.tab?.favIconUrl) {
+        payload.favicon = sender.tab.favIconUrl;
+      }
       const existing = tabMediaMap.get(tabId);
       tabMediaMap.set(tabId, {
         tabId,

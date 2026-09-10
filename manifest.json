@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Stop Play — Background Video Alert",
-  "version": "1.2.0",
+  "name": "Stop Play — Background Video Alert ",
+  "version": "1.0.0",
   "description": "Never lose track of playing background videos. Proactive alerts and quick controls when switching tabs or apps.",
   "permissions": [
     "tabs",
@@ -20,8 +20,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content-script.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ],
       "run_at": "document_idle",
       "all_frames": true
     }
@@ -48,8 +52,12 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["icons/*"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "icons/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
