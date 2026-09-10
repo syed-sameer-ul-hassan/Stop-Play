@@ -37,31 +37,84 @@
 }
 
 @keyframes eq1 {
-  0%, 100% { height: 3px; }
-  50% { height: 14px; }
-}
-@keyframes eq2 {
-  0%, 100% { height: 11px; }
-  50% { height: 4px; }
-}
-@keyframes eq3 {
-  0%, 100% { height: 6px; }
-  50% { height: 16px; }
-}
-@keyframes eq4 {
-  0%, 100% { height: 13px; }
-  50% { height: 5px; }
+
+  0%,
+  100% {
+    height: 3px;
+  }
+
+  50% {
+    height: 14px;
+  }
 }
 
-.animate-eq-1 { animation: eq1 0.75s ease-in-out infinite; }
-.animate-eq-2 { animation: eq2 0.85s ease-in-out infinite 0.15s; }
-.animate-eq-3 { animation: eq3 0.65s ease-in-out infinite 0.3s; }
-.animate-eq-4 { animation: eq4 0.9s ease-in-out infinite 0.05s; }
+@keyframes eq2 {
+
+  0%,
+  100% {
+    height: 11px;
+  }
+
+  50% {
+    height: 4px;
+  }
+}
+
+@keyframes eq3 {
+
+  0%,
+  100% {
+    height: 6px;
+  }
+
+  50% {
+    height: 16px;
+  }
+}
+
+@keyframes eq4 {
+
+  0%,
+  100% {
+    height: 13px;
+  }
+
+  50% {
+    height: 5px;
+  }
+}
+
+.animate-eq-1 {
+  animation: eq1 0.75s ease-in-out infinite;
+}
+
+.animate-eq-2 {
+  animation: eq2 0.85s ease-in-out infinite 0.15s;
+}
+
+.animate-eq-3 {
+  animation: eq3 0.65s ease-in-out infinite 0.3s;
+}
+
+.animate-eq-4 {
+  animation: eq4 0.9s ease-in-out infinite 0.05s;
+}
 
 @keyframes radar-pulse {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.15); opacity: 0.2; }
-  100% { transform: scale(0.95); opacity: 0.8; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
 }
 
 .animate-radar {
@@ -71,13 +124,16 @@
 ::-webkit-scrollbar {
   width: 1px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: transparent;
+  background: #33394a;
 }

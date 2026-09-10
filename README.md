@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icons/icon.svg" alt="Stop Play Logo" width="84" height="84" />
+  <img src="public/icons/readme.svg" alt="Stop Play Logo" width="84" height="84" />
   <h1>Stop Play</h1>
   <p><strong>Intelligent Video Guardian & Background Audio Controller for Google Chrome</strong></p>
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-**Stop Play** is a lightweight, open-source Google Chrome extension (Manifest V3) that monitors video and audio playback across your browser. When you switch away from a tab or switch from Chrome to an external desktop app (such as VS Code, Slack, or Zoom), Stop Play automatically pauses background media to save battery, save bandwidth, and stop unwanted distractions.
+**Stop Play** is a lightweight, open-source Google Chrome extension that monitors video and audio playback across your browser. When you switch away from a tab or switch from Chrome to an external desktop app (such as VS Code, Slack, or Zoom), Stop Play automatically pauses background media to save battery, save bandwidth, and stop unwanted distractions.
 
 When you return, it seamlessly auto-resumes playback right where you paused. Need background music or a podcast to keep playing while you work? Simply lock that single tab with **Keep Playing in Background** (<kbd>L</kbd>), and Stop Play exempts it while continuing to protect all your other tabs!
 

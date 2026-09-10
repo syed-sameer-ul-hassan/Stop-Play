@@ -65,7 +65,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 14px #38bdf8cc;
 }
 
 ::-webkit-scrollbar {
